@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		@event = current_user.events.build(events_params)
+		@event = current_user.created_events.build(events_params)
 		if @event.save
 			flash[:success] = "Event successfully created"
 			redirect_to root_url
@@ -24,7 +24,7 @@ class EventsController < ApplicationController
 	private
 
 		def events_params
-			params.require(:event).permit(:name, :date)
+			params.require(:event).permit(:title, :descript, :date)
 		end
 
 end

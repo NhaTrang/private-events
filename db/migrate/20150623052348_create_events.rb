@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :title
       t.string :descript
       t.datetime :date
-      t.references :user
+      t.references :creator
 
       t.timestamps null: false
     end

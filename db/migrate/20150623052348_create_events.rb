@@ -3,7 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.string :title
       t.string :descript
-      t.string :date
+      t.datetime :date
       t.references :user
 
       t.timestamps null: false

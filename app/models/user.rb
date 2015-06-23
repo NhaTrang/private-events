@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	before_create :create_remember_token
+	has_many :created_events, :foreign_key => 'created_id'
 
 	def User.new_remember_token
 		SecureRandom.urlsafe_base64

@@ -1,14 +1,15 @@
 <h3>New User</h3>
 
 <%= form_for @user do |f| %>
-	<ul>
-	  <% @user.errors.full_messages.each do |error| %>
-	  <li><%= error %></li>
-	  <% end %>
-	</ul>
+	<%= f.label :user %>
+	<%= f.text_field :user %><br>
 
-	<%= f.label :username %>
-	<%= f.text_field :username %><br>
+	<%= f.label :name %>
+	<%= f.text_field :name %><br>
+
+	<%= f.label :email %>
+	<%= f.text_field :email %><br>
+
 
 	<%= f.submit 'Submit' %>
 <% end %>

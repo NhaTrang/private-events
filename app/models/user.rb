@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+	validates :email, presence: true, uniqueness: true
+	validates :name, presence: true
+
 	before_create :create_remember_token
 	has_many :created_events, class_name: 'Event', :foreign_key => :creator_id
 

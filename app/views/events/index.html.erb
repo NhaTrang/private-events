@@ -1,6 +1,6 @@
 <h3>Events List</h3>
 
 <% @events.each do |f| %>
-	<%= link_to f.title, '#' %>
+	<%= link_to f.title, event_info_path(f.id) %>
 	<%= f.date %>
 <% end %>

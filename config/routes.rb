@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   post 'events' => 'events#create'
   get 'events/:id' => 'events#show', as: :event_info
 
-  root 'users#index'
+  root 'static_pages#index'
 end

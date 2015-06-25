@@ -12,7 +12,8 @@
 		<p><strong>Hosted Events</strong></p>
 		<% if @user.created_events.any? %>
 			<% @user.created_events.each do |event| %>
-				<p><%= event.title%></p>
+				<%= link_to event.title, event_info_path(event.id) %>
+				<br>
 			<% end %>
 		<% else %>
 			<p>No hosted events</p>

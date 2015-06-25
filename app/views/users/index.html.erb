@@ -1,0 +1,8 @@
+<div class="container text-center">
+	<h3>User List</h3>
+
+	<% @users.each do |f| %>
+		<%= link_to f.user, user_info_path(f.id) %>
+		<br>
+	<% end %>
+</div>

@@ -1,10 +1,13 @@
 class User < ActiveRecord::Base
+	before_create :create_remember_token
+
 	validates :email, presence: true, uniqueness: true
 	validates :name, presence: true
 
-	before_create :create_remember_token
+	has_many :activities, class_name: "Invite", foreign_key: :attended_event_id, dependent: :destroy
 	has_many :created_events, class_name: 'Event', :foreign_key => :creator_id
-	has_many :attended_events, through: :invites
+	has_many :attended_events, through: :activities, source: :attended_event
+
 
 	def User.new_remember_token
 		SecureRandom.urlsafe_base64

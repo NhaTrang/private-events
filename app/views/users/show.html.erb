@@ -1,7 +1,27 @@
 <div class="container text-center">
-	<h3>User List</h3>
+	<h3><%= @user.user%>'s profile</h3>
 
-	<% @users.each do |f| %>
-		<a href='#'><%= f.user %></a>
-	<% end %>
+	<div class="text-left user-data">
+		<p><strong>Name</strong></p>
+		<p><%= @user.name %></p>
+		<p><strong>Email</strong></p>
+		<p><%= @user.email %></p>
+		
+		<p><strong>Hosted Events</strong></p>
+		<% if @user.created_events.any? %>
+			<% @user.created_events.each do |event| %>
+				<p><%= event.title%></p>
+			<% end %>
+		<% else %>
+			<p>No hosted events</p>
+		<% end %>
+
+		<p><strong>Attended Events</strong></p>
+		<% if @user.attended_events.any? %></div>
+			<p><%= @user.attended_events %></p>
+		<% else %>
+			<p>No attended events</p>
+		<% end %>
+	</div>
+
 </div>

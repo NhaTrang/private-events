@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :users, only: [:create,:new]
 
-  get 'users' => 'users#show'
+  get 'users' => 'users#index'
+  get 'users/:id' => 'users#show', as: :user_info
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
@@ -12,5 +13,5 @@ Rails.application.routes.draw do
   post 'events' => 'events#create'
   get 'events/:id' => 'events#show', as: :event_info
 
-  root 'users#show'
+  root 'users#index'
 end

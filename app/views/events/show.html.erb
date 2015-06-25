@@ -1,12 +1,26 @@
 <div class="container text-center">
-	<h3>Events Information</h3>
-
-	<p><%= @event.title %></p>
-	<p><%= @event.descript %></p>
-	<p><%= @event.location %></p>
-	<p><%= @event.creator.name %></p>
-	<p><%= @event.date %></p>
-
-
-	<p><%= @event.attendees %></p>
+	<h3>Event Information</h3>
+	<div class="event-info text-left">
+		<p><strong>Host</strong></p>
+		<p><%= @event.creator.name %></p>
+		<p><strong>Title</strong></p>
+		<p><%= @event.title %></p>
+		<p><strong>Description</strong></p>
+		<p><%= @event.descript %></p>
+		<p><strong>Location</strong></p>
+		<% if !@event.location.nil? %>
+			<p><%= @event.location %></p>
+		<% else %>
+			<p>None specified</p>
+		<% end %>
+		<p><strong>Time</strong></p>
+		<p><%= @event.date %></p>
+	
+		<h4>Attendees</h4>
+		<% if @event.attendees.any? %>
+			<p><%= @event.attendees %></p>
+		<% else %>
+			<p>No one is attending</p>
+		<% end %>
+	</div>
 </div>

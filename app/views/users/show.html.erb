@@ -20,13 +20,18 @@
 		<% end %>
 
 		<p><strong>Previously attended Events</strong></p>
-		<% if @user.attended_events.any? %></div>
+		<% if @prev_events.any? %></div>
 			<p><%= @user.attended_events %></p>
 		<% else %>
-			<p>No attended events</p>
+			<p>No previously attended events</p>
 		<% end %>
 
-		<p><strong>Upcoming events</strong></p>
+		<p><strong>Upcoming Events</strong></p>
+		<% if @upcoming_events.any? %></div>
+			<p><%= @user.attended_events %></p>
+		<% else %>
+			<p>No upcoming events</p>
+		<% end %>		
 	</div>
 
 </div>

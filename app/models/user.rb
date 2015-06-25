@@ -9,6 +9,14 @@ class User < ActiveRecord::Base
 	has_many :attended_events, through: :activities, source: :attended_event
 
 
+	def upcoming_events
+		attended_events.upcoming
+	end
+
+	def previous_events
+		attended_events.past
+	end
+
 	def User.new_remember_token
 		SecureRandom.urlsafe_base64
 	end

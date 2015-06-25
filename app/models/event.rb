@@ -1,4 +1,7 @@
 class Event < ActiveRecord::Base
+  	scope :upcoming, -> { where('date >= ?', DateTime.now) }
+  	scope :past, -> { where('date < ?', DateTime.now) }
+
 	validates :title, presence: true
 	validates :date, presence:true
 

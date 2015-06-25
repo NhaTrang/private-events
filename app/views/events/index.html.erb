@@ -1,7 +1,9 @@
-<h3>Events List</h3>
+<div class="container">
+	<h3>Events List</h3>
 
-<% @events.each do |f| %>
-	<%= link_to f.title, event_info_path(f.id) %>
-	<%= f.date %>
-	<br>
-<% end %>
+	<% @events.each do |f| %>
+		<%= link_to f.title, event_info_path(f.id) %>
+		<%= f.date %>
+		<br>
+	<% end %>
+</div>

@@ -1,18 +1,20 @@
-<h3>New Event</h3>
+<div class="container text-center">
+	<h3>New Event</h3>
 
-<%= form_for @event do |f| %>
-	<%= f.label :title %>
-	<%= f.text_field :title %><br>
+	<%= form_for @event do |f| %>
+		<%= f.label :title %>
+		<%= f.text_field :title %><br>
 
-	<%= f.label :description %>
-	<%= f.text_field :descript %><br>
+		<%= f.label :description %>
+		<%= f.text_field :descript %><br>
 
-	<%= f.label :location %>
-	<%= f.text_field :location %><br>
+		<%= f.label :location %>
+		<%= f.text_field :location %><br>
 
-	<%= f.label :date %>
-	<%= f.text_field :date %><br>
+		<%= f.label :date %>
+		<%= f.text_field :date %><br>
 
 
-	<%= f.submit 'Submit' %>
-<% end %>
+		<%= f.submit 'Submit' %>
+	<% end %>
+</div>

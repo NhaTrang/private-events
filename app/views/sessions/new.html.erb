@@ -1,7 +1,17 @@
+<% provide(:title, "Login") %>
+
 <div class="container text-center">
 	<h3>Login</h3>
 
 	<%= form_for(:session, url:login_path) do |f| %>
+		
+		<% if !flash[:error].nil? %> <!-- Error popup for entering blank data -->
+			<div class="alert alert-error">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<strong><%= flash[:error] %></strong>
+			</div>
+		<% end %>
+
 		<%= f.label :email %>
 		<%= f.text_field :email %><br>
 

@@ -1,7 +1,10 @@
+<% provide(:title, "New User") %>
+
 <div class="container text-center">
 	<h3>New User</h3>
 
 	<%= form_for @user do |f| %>
+		<%= render 'shared/error', object: f.object %>
 		<%= f.label :user %>
 		<%= f.text_field :user %><br>
 

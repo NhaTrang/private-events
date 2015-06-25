@@ -1,3 +1,5 @@
+<% provide(:title, "User Info") %>
+
 <div class="container text-center">
 	<h3><%= @user.user%>'s profile</h3>
 
@@ -16,12 +18,14 @@
 			<p>No hosted events</p>
 		<% end %>
 
-		<p><strong>Attended Events</strong></p>
+		<p><strong>Previously attended Events</strong></p>
 		<% if @user.attended_events.any? %></div>
 			<p><%= @user.attended_events %></p>
 		<% else %>
 			<p>No attended events</p>
 		<% end %>
+
+		<p><strong>Upcoming events</strong></p>
 	</div>
 
 </div>

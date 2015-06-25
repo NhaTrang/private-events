@@ -1,7 +1,10 @@
+<% provide(:title, "New Event") %>
+
 <div class="container text-center">
 	<h3>New Event</h3>
 
 	<%= form_for @event do |f| %>
+		<%= render 'shared/error', object: f.object %>
 		<%= f.label :title %>
 		<%= f.text_field :title %><br>
 

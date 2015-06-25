@@ -3,4 +3,5 @@
 <% @events.each do |f| %>
 	<%= link_to f.title, event_info_path(f.id) %>
 	<%= f.date %>
+	<br>
 <% end %>

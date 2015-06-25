@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
 	before_create :create_remember_token
 	has_many :created_events, class_name: 'Event', :foreign_key => :creator_id
+	has_many :attended_events, through: :invites
 
 	def User.new_remember_token
 		SecureRandom.urlsafe_base64

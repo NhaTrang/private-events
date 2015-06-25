@@ -10,4 +10,12 @@ class Event < ActiveRecord::Base
 	has_many :people, class_name: "Invite", foreign_key: "attendee_id",dependent: :destroy
 	has_many :attendees, through: :people, source: :attendee
 
+	def past_events
+		date.past
+	end
+
+	def upcoming_events
+		date.upcoming
+	end
+
 end

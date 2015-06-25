@@ -4,15 +4,23 @@
 	<h3>Events List</h3>
 
 	<h4>Upcoming Events</h4>
-	<% @events.each do |f| %>
-		<%= link_to f.title, event_info_path(f.id) %>
-		<%= f.date %>
-		<br>
+	<% if @events.upcoming.any? %>
+		<% @events.upcoming.each do |f| %>
+			<%= link_to f.title, event_info_path(f.id) %>
+			<%= f.date %>
+			<br>
+		<% end %>
+	<% else %>
+		<p>No upcoming events</p>
 	<% end %>
 	<h4>Past Events</h4>
-	<% @events.each do |f| %>
-		<%= link_to f.title, event_info_path(f.id) %>
-		<%= f.date %>
-		<br>
+	<% if @events.past.any? %>
+		<% @events.past.each do |f| %>
+			<%= link_to f.title, event_info_path(f.id) %>
+			<%= f.date %>
+			<br>
+		<% end %>
+	<% else %>
+		<p>No past events</p>
 	<% end %>
 </div>

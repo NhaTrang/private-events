@@ -29,7 +29,7 @@
 	
 		<h4>Attendees</h4>
 		<% if @event.attendees.any? %>
-			<p><%= @event.attendees %></p>
+			<p><%= @event.attendees.name %></p>
 		<% else %>
 			<p>No one is attending</p>
 		<% end %>

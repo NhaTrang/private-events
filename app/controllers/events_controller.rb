@@ -22,6 +22,14 @@ class EventsController < ApplicationController
 		@event = Event.find_by(id: params[:id])
 	end
 
+	def attend
+		#find the right event
+		#find the right person
+		#add person as atendee and as attended event
+		#can later make sure it unique
+		@event = Event.find_by(:id => params[:id])
+	end
+
 	private
 
 		def events_params

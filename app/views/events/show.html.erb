@@ -26,4 +26,7 @@
 			<p>No one is attending</p>
 		<% end %>
 	</div>
+	<% if signed_in? %>
+		<%= link_to "Attend Event", attend_path(@event.id), :class => "btn btn-default" %>
+	<% end %>
 </div>

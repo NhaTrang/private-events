@@ -29,7 +29,9 @@
 	
 		<h4>Attendees</h4>
 		<% if @event.attendees.any? %>
-			<p><%= @event.attendees.name %></p>
+			<% @event.attendees.each do |attendee| %>
+			<%= link_to attendee.name, user_info_path(attendee.id) %>
+			<% end %>
 		<% else %>
 			<p>No one is attending</p>
 		<% end %>

@@ -28,6 +28,12 @@ class EventsController < ApplicationController
 		#add person as atendee and as attended event
 		#can later make sure it unique
 		@event = Event.find_by(:id => params[:id])
+		@user = User.find_by(:id => current_user.id)
+		@user.attended_events = @event
+		@event.attendees = @user
+
+		flash.now[:success] = "Successfully attending event"
+		redirect_to 'show'
 	end
 
 	private

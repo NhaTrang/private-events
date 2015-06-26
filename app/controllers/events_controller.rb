@@ -20,13 +20,16 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.find_by(id: params[:id])
+		#User.joins(:attended_events).where('invites.attended_events_id =?', 1)
+		@attendee = User.joins(:attended_events).where('invites.attended_event_id =?', params[:id])
 	end
 
+	#consider setting this up through invite and maybe inner join it
 	def attend
 		@event = Event.find_by(:id => params[:id])
 		@user = User.find_by(:id => current_user.id)
 
-		if @event.update_attributes(events_params) && @user.update_attributes(events_params) 	
+		if @event.update_attributes(attend_params) && @user.update_attributes(user_param) 	
 			flash.now[:success] = "Successfully attending event"
 			redirect_to 'show'
 		else
@@ -38,9 +41,15 @@ class EventsController < ApplicationController
 	private
 
 		def events_params
-			params.require(:event).permit(:title, :descript, :date, :location, :attendees, :attended_events)
+			params.require(:event).permit(:title, :descript, :date, :location)
 		end
 
+		def attend_params
+			params.require(:event).permit(:attendees)
+		end
 
+		def user_param
+			params.require(:event).permit(:attended_events)
+		end
 
 end

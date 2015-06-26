@@ -28,8 +28,8 @@
 		<p><%= @event.date %></p>
 	
 		<h4>Attendees</h4>
-		<% if @event.attendees.any? %>
-			<% @event.attendees.each do |attendee| %>
+		<% if @attendee.any? %>
+			<% @attendee.each do |attendee| %>
 			<%= link_to attendee.name, user_info_path(attendee.id) %>
 			<br>
 			<% end %>

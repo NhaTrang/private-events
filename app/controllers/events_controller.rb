@@ -23,23 +23,24 @@ class EventsController < ApplicationController
 	end
 
 	def attend
-		#find the right event
-		#find the right person
-		#add person as atendee and as attended event
-		#can later make sure it unique
 		@event = Event.find_by(:id => params[:id])
 		@user = User.find_by(:id => current_user.id)
-		@user.attended_events = @event
-		@event.attendees = @user
 
-		flash.now[:success] = "Successfully attending event"
-		redirect_to 'show'
+		if @event.update_attributes(events_params) && @user.update_attributes(events_params) 	
+			flash.now[:success] = "Successfully attending event"
+			redirect_to 'show'
+		else
+			flash.now[:error] = "Error attending event"
+			render 'show'
+		end
 	end
 
 	private
 
 		def events_params
-			params.require(:event).permit(:title, :descript, :date, :location)
+			params.require(:event).permit(:title, :descript, :date, :location, :attendees, :attended_events)
 		end
+
+
 
 end

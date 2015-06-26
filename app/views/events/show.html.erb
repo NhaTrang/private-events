@@ -31,12 +31,18 @@
 		<% if @event.attendees.any? %>
 			<% @event.attendees.each do |attendee| %>
 			<%= link_to attendee.name, user_info_path(attendee.id) %>
+			<br>
 			<% end %>
 		<% else %>
 			<p>No one is attending</p>
 		<% end %>
 	</div>
+	
 	<% if signed_in? && current_user.id != @event.creator.id %>
-		<%= link_to "Attend Event", attend_path(@event.id), :class => "btn btn-default" %>
+		<%= form_for @event, :url => {:action => "attend"} do |f| %>
+			<%= f.hidden_field :attendees, :value => current_user.id %>
+			<%= f.hidden_field :attended_events, :value => @event.id %>
+			<%= f.submit 'Attend Event', :class => "btn btn-default" %>
+		<% end %>
 	<% end %>
 </div>

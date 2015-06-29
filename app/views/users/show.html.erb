@@ -3,7 +3,7 @@
 <div class="container text-center">
 	<h3><%= @user.user%>'s profile</h3>
 
-	<div class="text-left user-data">
+	<div class="text-left user-data well">
 		<p><strong>Name</strong></p>
 		<p><%= @user.name %></p>
 		<% if current_user.id == @user.id %>

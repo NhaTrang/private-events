@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 	def show
 		@user = User.find_by(id: params[:id])
+		@attended_event = Event.joins(:attendees).where('invites.attendees_id =?', params[:id])
 		@upcoming_events = @user.upcoming_events
 		@prev_events = @user.previous_events
-		@attended_event = User.joins(:attendees).where('invites.attendees_id =?', params[:id])
 	end
 
 	def index

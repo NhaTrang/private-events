@@ -35,8 +35,8 @@
 		<p><%= @event.date %></p>
 	
 		<h4>Attendees</h4>
-		<% if @attendee.any? %>
-			<% @attendee.each do |attendee| %>
+		<% if @attendees.any? %>
+			<% @attendees.each do |attendee| %>
 			<%= link_to attendee.name, user_info_path(attendee.id) %>
 			<br>
 			<% end %>
@@ -44,11 +44,11 @@
 			<p>No one is attending</p>
 		<% end %>
 	</div>
-	
+
 	<% if signed_in? && current_user.id != @event.creator.id && @event.date > DateTime.now %>
-		<%= form_for @event, :url => {:controller => :invites, :action => "create"} do |f| %>
-			<%= f.hidden_field :attendees, :value => current_user.id %>
-			<%= f.hidden_field :attended_events, :value => @event.id %>
+		<%= form_for @invite, :url => {:controller => :invites, :action => "create"} do |f| %>
+			<%= f.hidden_field :attendee_id, :value => current_user.id %>
+			<%= f.hidden_field :attended_event_id, :value => @event.id %>
 			<%= f.submit 'Attend Event', :class => "btn btn-default" %>
 		<% end %>
 	<% end %>

@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
 
 	belongs_to :creator, :class_name => 'User'
 
-	has_many :people, class_name: "Invite", foreign_key: "attendee_id",dependent: :destroy
+	has_many :people, class_name: "Invite", foreign_key: "attended_event_id",dependent: :destroy
 	has_many :attendees, through: :people, source: :attendee
 
 	def past_events

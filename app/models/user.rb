@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, uniqueness: true
 	validates :name, presence: true
 
-	has_many :activities, class_name: "Invite", foreign_key: :attended_event_id, dependent: :destroy
+	has_many :activities, class_name: "Invite", foreign_key: "attendee_id", dependent: :destroy
 	has_many :created_events, class_name: 'Event', :foreign_key => :creator_id
 	has_many :attended_events, through: :activities, source: :attended_event
 

@@ -32,7 +32,7 @@
 		<% end %>
 
 		<p><strong>Upcoming Events</strong></p>
-		<% if @upcoming_events.any? %></div>
+		<% if @upcoming_events.any? %>
 			<% @user.upcoming_events.each do |event| %>
 				<%= link_to event.title, event_info_path(event.id) %>
 				<br>

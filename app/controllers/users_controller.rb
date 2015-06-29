@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 		@user = User.find_by(id: params[:id])
 		@upcoming_events = @user.upcoming_events
 		@prev_events = @user.previous_events
+		@attended_event = User.joins(:attendees).where('invites.attendees_id =?', params[:id])
 	end
 
 	def index
@@ -30,3 +31,4 @@ class UsersController < ApplicationController
 			params.require(:user).permit(:user, :name, :email)
 		end
 end
+

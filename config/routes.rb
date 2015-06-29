@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'events/new' => 'events#new'
   post 'events' => 'events#create'
   get 'events/:id' => 'events#show', as: :event_info
-  patch 'events/:id' => 'events#attend', as: :attend
+  patch 'events/:id' => 'invites#create', as: :create
 
   root 'static_pages#index'
 end

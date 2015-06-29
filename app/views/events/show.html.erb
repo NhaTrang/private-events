@@ -11,6 +11,13 @@
 		</div>
 	<% end %>
 
+	<% if !flash[:error].nil? %> <!-- Error popup for entering blank data -->
+		<div class="alert alert-failure">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong><%= flash[:error] %></strong>
+		</div>
+	<% end %>
+
 	<div class="event-info text-left well">
 		<p><strong>Host</strong></p>
 		<%= link_to @event.creator.name, user_info_path(@event.creator.id) %>
@@ -39,7 +46,7 @@
 	</div>
 	
 	<% if signed_in? && current_user.id != @event.creator.id && @event.date > DateTime.now %>
-		<%= form_for @event, :url => {:action => "attend"} do |f| %>
+		<%= form_for @event, :url => {:controller => :invites, :action => "create"} do |f| %>
 			<%= f.hidden_field :attendees, :value => current_user.id %>
 			<%= f.hidden_field :attended_events, :value => @event.id %>
 			<%= f.submit 'Attend Event', :class => "btn btn-default" %>

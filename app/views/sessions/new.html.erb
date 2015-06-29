@@ -3,6 +3,13 @@
 <div class="container text-center">
 	<h3>Private Events</h3>
 
+	<% if !flash[:success].nil? %> <!-- Error popup for entering blank data -->
+		<div class="alert alert-success">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong><%= flash[:success] %></strong>
+		</div>
+	<% end %>
+
 	<%= form_for(:session, url:login_path) do |f| %>
 		
 		<% if !flash[:error].nil? %> <!-- Error popup for entering blank data -->

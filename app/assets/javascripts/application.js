@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+jQuery(function($){
+	$('#dateform').mask("9999/99/99 99:99:99",{placeholder:"yyyy/mm/dd hr:mn:sc"})
+});

@@ -25,8 +25,8 @@ class EventsControllerTest < ActionController::TestCase
 
   test 'should redirect to events path after post and logged in' do
     log_in_as(@user)
-    assert_difference "Event.count" do
-      post :create, event: {title: "cat", date: '1950-05-10', descript: "momo", creator_id: @user.id}
+    assert_difference "Event.count", 1 do
+      post :create, event: {title: "cat", date: '1950-05-10', descript: "momo", location: "bathroom"}
     end
     assert_redirected_to events_path
   end

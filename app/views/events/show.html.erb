@@ -41,7 +41,11 @@
 			<br>
 			<% end %>
 		<% else %>
-			<p>No one is attending</p>
+			<% if @event.date < DateTime.now %>
+				<p>No one attended</p>
+			<% else %>
+				<p>No one is attending yet!</p>
+			<% end %>
 		<% end %>
 	</div>
 

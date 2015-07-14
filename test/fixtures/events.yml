@@ -8,9 +8,11 @@ one:
   title: Test
   descript: Become a cat
   date: 1950-05-10
+  location: bathroom
   creator_id: 1
 two: 
   title: Test2
   descript: Become a cat2
   date: 2060-08-15
+  location: heritage
   creator_id: 2

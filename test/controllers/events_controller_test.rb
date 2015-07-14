@@ -7,8 +7,9 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "should redirect create when not logged in" do
+    assert_not is_logged_in?
     assert_no_difference "Event.count" do
-      post :create, event: {title: "cat", date: 19500510}
+      post :create, event: {title: "cat", date: '1950-05-10'}
     end
     assert_redirected_to root_path
   end
@@ -23,10 +24,19 @@ class EventsControllerTest < ActionController::TestCase
   	assert_response :success
   end
 
+  #figure out how to fix the logged in issue
+  test 'should get new when logged in' do
+    log_in_as(@user)
+    assert is_logged_in?
+    get :new
+    assert_response :success
+  end
+
+  #does not seem to be logged in
   test 'should redirect to events path after post and logged in' do
     log_in_as(@user)
     assert_difference "Event.count", 1 do
-      post :create, event: {title: "cat", date: '1950-05-10', descript: "momo", location: "bathroom"}
+      post :create, event: {title: "cat", date: '1950-05-10'}
     end
     assert_redirected_to events_path
   end

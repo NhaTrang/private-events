@@ -45,7 +45,7 @@
 		<% end %>
 	</div>
 
-	<% if signed_in? && current_user.id != @event.creator.id && @event.date > DateTime.now %>
+	<% if signed_in? && current_user.id != @event.creator.id && @event.date > DateTime.now && !current_user.attending?(@event) %>
 		<%= form_for @invite, :url => {:controller => :invites, :action => "create"} do |f| %>
 			<%= f.hidden_field :attendee_id, :value => current_user.id %>
 			<%= f.hidden_field :attended_event_id, :value => @event.id %>

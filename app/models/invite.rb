@@ -4,4 +4,5 @@ class Invite < ActiveRecord::Base
 
 	validates :attendee_id, presence: true
 	validates :attended_event_id, presence: true
+	validates :attendee_id, :uniqueness => {:scope => [:attended_event_id]}
 end

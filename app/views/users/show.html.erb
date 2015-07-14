@@ -6,9 +6,11 @@
 	<div class="text-left user-data well">
 		<p><strong>Name</strong></p>
 		<p><%= @user.name %></p>
-		<% if current_user.id == @user.id %>
-			<p><strong>Email</strong></p>
-			<p><%= @user.email %></p>
+		<% if  signed_in? %>
+			<% if current_user.id == @user.id %>
+				<p><strong>Email</strong></p>
+				<p><%= @user.email %></p>
+			<% end %>
 		<% end %>
 		
 		<p><strong>Hosted Events</strong></p>
@@ -41,12 +43,6 @@
 			<p>No upcoming events</p>
 		<% end %>	
 
-		<!--
-		<% if @user.id == current_user.id %>
-			<hr>
-			<p><strong>Pending Invites</strong></p>
-		<% end %>
-		-->
 	</div>
 
 </div>

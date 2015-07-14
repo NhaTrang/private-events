@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 	before_create :create_remember_token
 
 	validates :email, presence: true, uniqueness: true
+    validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+	validates :user, presence: true
 	validates :name, presence: true
 
 	has_many :activities, class_name: "Invite", foreign_key: "attendee_id", dependent: :destroy
@@ -15,6 +17,10 @@ class User < ActiveRecord::Base
 
 	def previous_events
 		attended_events.past
+	end
+
+	def attending?(event)
+		attended_events.include?(event)
 	end
 
 	def User.new_remember_token

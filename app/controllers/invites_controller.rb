@@ -13,8 +13,8 @@ class InvitesController < ApplicationController
 	end
 
 	private
-		def attend_params
-			params.require(:invite).permit(:attendee_id, :attended_event_id)
-		end
+	def attend_params
+		params.require(:invite).permit(:attendee_id, :attended_event_id)
+	end
 
 end

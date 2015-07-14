@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+	before_action :signed_in?, only: [:new, :create]
+
 	def new
 		@event = Event.new
 	end
@@ -26,8 +28,12 @@ class EventsController < ApplicationController
 
 	private
 
-		def events_params
-			params.require(:event).permit(:title, :descript, :date, :location)
-		end
+	def events_params
+		params.require(:event).permit(:title, :descript, :date, :location)
+	end
+
+	def signed_in?
+		redirect_to root_url unless !current_user.nil?
+	end
 
 end

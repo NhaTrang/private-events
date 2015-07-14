@@ -1,6 +1,6 @@
 #Events
-Event.create(title: 'Go to bed', descript: "I'm sleepy", date: 19900530, creator_id: 1, location: "Bathroom")
-Event.create(title: 'Go to work', descript: "I'm ready", date: 20200416, creator_id: 2, location: "Bedroom")
+Event.create(title: 'Go to bed', descript: "I'm sleepy", date: '19900530', creator_id: 1, location: "Bathroom")
+Event.create(title: 'Go to work', descript: "I'm ready", date: '20200416', creator_id: 2, location: "Bedroom")
 
 #Users
 User.create(user: 'TheStig', name:'Stig McMan', email: 'stig@yahoo.com')
